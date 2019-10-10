@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Windows.Tools.Controls;assembly=Syncfusion.Tools.Wpf"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
@@ -10,25 +11,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
     <UserControl.Resources>
-        
-       
-        <DataTemplate x:Key="FontTemplate">
-            <Grid>
-                <TextBlock Text="{Binding Path=Name}"></TextBlock>
-            </Grid>
-        </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Orientation="Vertical"
-                    >
-            <TextBox Margin="50"
-                Width="300" Padding="5, 3, 5, 3" KeyUp="TextBox_KeyUp" Name="textBox" />
-            <Border Width="298" Height="150" BorderBrush="Black" BorderThickness="1">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Name="resultStack"></StackPanel>
-                </ScrollViewer>
-            </Border>
-
+        <StackPanel Orientation="Vertical">
+            <syncfusion:AutoComplete x:Name="AutoComplete" Source="Custom" KeyUp="AutoComplete_KeyUp" IsFilter="True"/>
         </StackPanel>
     </Grid>
 </UserControl>
